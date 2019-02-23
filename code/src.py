@@ -5,12 +5,12 @@ import numpy as np
 cap = cv2.VideoCapture('highway.mp4')
 _,f=cap.read()
 avg = np.float32(f)
-i=200 #Variable taken for number of frames
+i=400 #Variable used for no. of frames
+#We got clear Background for highway.mp4 video by taking 400 frames,but this can vary video to video.
 while(i):
     ret, img = cap.read()
     cv2.accumulateWeighted(img,avg,0.01)
     final = cv2.convertScaleAbs(avg)
-    cv2.imshow('RES1',final)
     i-=1
 
 cv2.imshow('Final', final) #final output
